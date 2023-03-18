@@ -24,7 +24,7 @@ COPY	conf/auto_config.sh /var/www/wordpress/auto_config.sh
 
 RUN	mkdir /run/php 
 
-RUN	/usr/sbin/php-fpm7.3 -F
+RUN	/usr/sbin/php-fpm7.3 
 
 ENTRYPOINT	["/bin/bash", "/var/www/wordpress/auto_config.sh"]
 

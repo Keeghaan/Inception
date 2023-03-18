@@ -1,6 +1,10 @@
+NAME =	Inception
+
 CONTAINER = `docker ps -aq`
 
 IMAGE = `docker images -aq`
+
+${NAME}: all
 
 all:
 	mkdir -p /home/jcourtoi/data/wordpress
