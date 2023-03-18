@@ -13,8 +13,6 @@ RUN	mkdir -p /var/run/nginx
 
 RUN	mkdir -p /var/www/html
 
-COPY	conf/index.html /etc/nginx/index.html
-
 COPY	conf/nginx.conf /etc/nginx/nginx.conf
 
 RUN	chmod 755 /var/www/html
