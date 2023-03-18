@@ -11,7 +11,9 @@ RUN	openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt \
 
 RUN	mkdir -p /var/run/nginx
 
-COPY	tools/index.html /var/www/index.html
+RUN	mkdir -p /var/www/html
+
+COPY	conf/index.html /etc/nginx/index.html
 
 COPY	conf/nginx.conf /etc/nginx/nginx.conf
 

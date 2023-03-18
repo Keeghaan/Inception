@@ -12,7 +12,7 @@ app.get('/', (req, res, next) => {
 const https = require('https');
 const server = https.createServer({ key, cert }, app);
 
-const port = 3000;
+const port = 443;
 server.listen(port, () => {
   console.log(`Server is listening on https://localhost:${port}`);
 });

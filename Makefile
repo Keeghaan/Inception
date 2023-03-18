@@ -28,4 +28,4 @@ iclean:
 
 fclean: stop clean iclean 
 	docker system prune -af --volumes
-	rm -rf /home/jcourtoi/data
+	sudo rm -rf /home/jcourtoi/data
