@@ -4,11 +4,13 @@ CONTAINER = `docker ps -aq`
 
 IMAGE = `docker images -aq`
 
+#VOLUME = `docker volume -q`
+
 ${NAME}: all
 
 all:
-	mkdir -p /home/jcourtoi/data/wordpress
-	mkdir -p /home/jcourtoi/data/mariadb
+	mkdir -p ${HOME}/data/wordpress
+	mkdir -p ${HOME}/data/mariadb
 	docker compose -f ./srcs/docker-compose.yml up -d 
 	docker compose -f ./srcs/docker-compose.yml ps
 
@@ -26,6 +28,11 @@ clean:
 iclean:
 	docker rmi -f ${IMAGE}
 
-fclean: stop clean iclean 
+#vclean:
+#	docker rm -f ${VOLUME}
+
+fclean: stop clean iclean #vclean
 	docker system prune -af --volumes
-	sudo rm -rf /home/jcourtoi/data
+	sudo rm -rf ${HOME}/data
+
+.PHONY: all re stop clean fclean iclean vclean

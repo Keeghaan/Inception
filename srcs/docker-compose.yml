@@ -30,11 +30,13 @@ services:
       - mariadb_v:/var/lib/mysql
     restart: unless-stopped
     healthcheck:
-      test: mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "show databases;"
+      test:  mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "show databases;"
+ #"mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -e 'SELECT 1'" mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "show databases;"
       interval : 1s
       retries: 10
     expose:
       - "3306"
+
   wordpress:
     container_name: wordpress
     image: wordpress:wordpress
@@ -58,13 +60,14 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/jcourtoi/data/wordpress
+      device: ${HOME}/data/wordpress
   mariadb_v:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/jcourtoi/data/mariadb
+      device: ${HOME}/data/mariadb
+
 networks:
   inception:
     driver: bridge
