@@ -30,14 +30,11 @@ sleep 10
 
 	wp user create --allow-root \
 		$USER $USER_EMAIL \
-		--role='contributor' \
+		--role='author' \
 		--user_pass=$USER_PASSWORD \
 		--path='/var/www/wordpress'
 
-fi
-
 	wp theme install yukiblogger --activate --allow-root --force
-    	wp theme activate yukiblogger --allow-root
-
+fi
 
 exec /usr/sbin/php-fpm7.3 -F
