@@ -36,7 +36,8 @@ sleep 10
 
 fi
 
-wp theme install twentytwentyone --allow-root --force
-    wp theme activate twentytwentyone --allow-root
+	wp theme install yukiblogger --activate --allow-root --force
+    	wp theme activate yukiblogger --allow-root
+
 
 exec /usr/sbin/php-fpm7.3 -F
