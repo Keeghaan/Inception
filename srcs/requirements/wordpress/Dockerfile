@@ -12,9 +12,9 @@ RUN	cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz && rm wordpress-6.0-fr_FR
 
 RUN	chown -R root:root /var/www/wordpress
 
-COPY	conf/www.conf /etc/php7/php-fpm.d
+COPY	conf/www.conf /etc/php/7.3/fpm/php-fpm.conf
 
-COPY	conf/www.conf /etc/php/7.3/fpm/pool.d
+COPY	conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 RUN 	wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
@@ -22,9 +22,9 @@ RUN	chmod +x wp-cli.phar
 
 RUN	mv wp-cli.phar /usr/local/bin/wp
 
-COPY	conf/auto_config.sh /auto_config.sh
+COPY	tools/auto_config.sh /auto_config.sh
 
-RUN	mkdir /run/php 
+RUN	mkdir -p /run/php
 
-ENTRYPOINT	["/bin/bash", "/auto_config.sh"]
+ENTRYPOINT	["/bin/sh", "/auto_config.sh"]
 
