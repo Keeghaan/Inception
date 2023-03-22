@@ -2,7 +2,7 @@ version: '3'
 services:
   nginx:
     container_name: nginx
-      #image: nginx:nginx
+    #image: nginx:jcourtoi
     volumes:
       - wordpress_v:/var/www/wordpress
     networks:
@@ -19,7 +19,7 @@ services:
 
   mariadb:
     container_name: mariadb
-      #image:  mariadb:mariadb
+    #image:  mariadb:jcourtoi
     networks:
       - inception
     build:
@@ -38,7 +38,7 @@ services:
 
   wordpress:
     container_name: wordpress
-      #image: wordpress:wordpress
+    #image: wordpress:jcourtoi
     env_file: .env
     volumes:
       - wordpress_v:/var/www/wordpress
