@@ -2,12 +2,12 @@
 
 if [ ! -f "/var/www/wordpress/wp-config.php" ]; then
 	
-RETURN=1
-while [ $RETURN -ne 0 ]; do
-    sleep 10 # in order to be sure that mariadb had enough time to be launched
-    mysqladmin -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -h mariadb ping
-    RETURN=$?
-done
+#RETURN=1
+#while [ $RETURN -ne 0 ]; do
+#    sleep 10 # in order to be sure that mariadb had enough time to be launched
+#    mysqladmin -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -h mariadb ping
+ #   RETURN=$?
+#done
 
 
 
@@ -34,7 +34,7 @@ sleep 10
 		--user_pass=$USER_PASSWORD \
 		--path='/var/www/wordpress'
 
-	wp theme install yukiblogger --activate --allow-root --force
+#	wp theme install yukiblogger --activate --allow-root --force
 fi
 
 exec /usr/sbin/php-fpm7.3 -F

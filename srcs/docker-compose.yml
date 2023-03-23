@@ -28,7 +28,7 @@ services:
     env_file: .env
     volumes:
       - mariadb_v:/var/lib/mysql
-    restart: unless-stopped
+    restart: on-failure
     healthcheck:
       test: mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -e 'SELECT 1'
       interval : 1s
@@ -45,7 +45,7 @@ services:
     networks:
       - inception
     build:
-      context: ./requirements/wordpress
+      context: ./requirements/wordpress 
       dockerfile: Dockerfile
     depends_on:
       mariadb:
@@ -69,4 +69,4 @@ volumes:
 
 networks:
   inception:
-    driver: bridge
+    driver: bridge #permet aux 3 containers de communiquer en pont
