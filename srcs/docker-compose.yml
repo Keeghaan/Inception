@@ -28,7 +28,7 @@ services:
     env_file: .env
     volumes:
       - mariadb_v:/var/lib/mysql
-    restart: on-failure
+    restart: unless-stopped 
     healthcheck:
       test: mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE} -e 'SELECT 1'
       interval : 1s
